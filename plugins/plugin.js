@@ -1,14 +1,13 @@
-const {shefin} = require('../events');
-const Heroku = require('heroku-client');
-const Config = require('../config');
-const {MessageType} = require('@adiwajshing/baileys');
-const got = require('got');
-const fs = require('fs');
-const Db = require('./sql/plugin');
-const Language = require('../language');
-const Lang = Language.getString('_plugin');
-const NLang = Language.getString('updater');
-
+let Alexa = require('../events');
+let Heroku = require('heroku-client');
+let Config = require('../config');
+let {MessageType} = require('@adiwajshing/baileys');
+let got = require('got');
+let fs = require('fs');
+let Db = require('./sql/plugin');
+let Language = require('../language');
+let Lang = Language.getString('_plugin');
+let NLang = Language.getString('updater');
 let msg = Config.LANG == 'TR' || Config.LANG == 'AZ' ? '*Bu Plugin Resmi Olarak Onaylanmıştır!* ✅' : '*This Plugin is Officially Approved!* ✅'
 let inmsg = Config.LANG == 'TR' || Config.LANG == 'AZ' ? '*Bu Plugin Resmi Değildir!* ❌' : '*This Plugin isn\'t Officially Approved!* ❌'
 
@@ -19,7 +18,7 @@ const heroku = new Heroku({
 
 let baseURI = '/apps/' + Config.HEROKU.APP_NAME;
 
-shefin({pattern: 'plugin ?(.*)', fromMe: true, desc: Lang.INSTALL_DESC, warn: Lang.WARN}, (async (message, match) => {
+Alexa.addCommand({pattern: 'plugin ?(.*)', fromMe: true, desc: Lang.INSTALL_DESC, warn: Lang.WARN}, (async (message, match) => {
     if (match[1] === '') return await message.sendMessage(Lang.NEED_URL + '.install https://gist.github.com/souravkl11/example.js')
     try {
         var url = new URL(match[1]);
@@ -50,14 +49,14 @@ shefin({pattern: 'plugin ?(.*)', fromMe: true, desc: Lang.INSTALL_DESC, warn: La
 
         await Db.installPlugin(url, plugin_name);
         await message.client.sendMessage(message.jid, Lang.INSTALLED, MessageType.text);
-        if (!match[1].includes('souravkl11')) {
+        if (!match[1].includes('5hefin')) {
             await new Promise(r => setTimeout(r, 400));
             await message.client.sendMessage(message.jid, Lang.UNOFF, MessageType.text);
         }
     }
 }));
 
-shefin({pattern: 'plugin list', fromMe: true, desc: Lang.PLUGIN_DESC }, (async (message, match) => {
+Alexa.addCommand({pattern: 'plugin list', fromMe: true, desc: Lang.PLUGIN_DESC }, (async (message, match) => {
     var mesaj = Lang.INSTALLED_FROM_REMOTE;
     var plugins = await Db.PluginDB.findAll();
     if (plugins.length < 1) {
@@ -72,7 +71,7 @@ shefin({pattern: 'plugin list', fromMe: true, desc: Lang.PLUGIN_DESC }, (async (
     }
 }));
 
-shefin({pattern: 'remove(?: |$)(.*)', fromMe: true, desc: Lang.REMOVE_DESC}, (async (message, match) => {
+Alexa.addCommand({pattern: 'remove(?: |$)(.*)', fromMe: true, desc: Lang.REMOVE_DESC}, (async (message, match) => {
     if (match[1] === '') return await message.sendMessage(Lang.NEED_PLUGIN);
     var plugin = await Db.PluginDB.findAll({ where: {name: match[1]} });
     if (plugin.length < 1) {
