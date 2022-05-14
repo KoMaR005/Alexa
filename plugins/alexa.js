@@ -1,15 +1,15 @@
-const {shefin,commands} = require('../events');
+const Alexa = require('../events');
 const Config = require('../config');
 const {getBuffer} = require('alexa-bot');
 const {MessageType} = require('@adiwajshing/baileys');
 const Language = require('../language');
 const Lang = Language.getString('_asena');
 
-shefin({pattern: 'list ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Alexa.addCommand({pattern: 'list ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
         var img = await getBuffer(Config.LOGOSK)
         var CMD_HELP = '';
         if (match[1] === '') {
-            commands.map(
+            Alexa.commands.map(
                 async (command) =>  {
                     if (command.dontAddCommandList || command.pattern === undefined) return;
                     try {
