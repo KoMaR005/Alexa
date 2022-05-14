@@ -1,0 +1,35 @@
+{
+  "name": "Alexa",
+  "version": "1.0.0",
+  "description": "Alexa whatsapp bot- Modified version of Whatsasena.",
+  "main": "./Alexa/index.js",
+  "scripts": {
+    "start": "supervisor -s index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5hefin/Alexa.git"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "ai",
+    "Alexa",
+    "WhatsAlexa"
+  ],
+  "author": "Shefin",
+  "developer": "Shefin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/5hefin/Alexa/issues"
+  },
+  "homepage": "https://github.com/5hefin/Alexa#readme",
+  "dependencies": {
+    "alexa-bot": "1.0.1",
+    "file-type": "16.5.2",
+    "nekobin": "0.0.1",
+    "raganork-bot": "1.9.8",
+    "sequelize": "6.13.0",
+    "supervisor": "0.12.0"
+     }
+}
