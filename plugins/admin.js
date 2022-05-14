@@ -1,18 +1,9 @@
-/* Copyright (C) 2020 Yusuf Usta.
-
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-
-WhatsAsena - Yusuf Usta
-*/
-
-const {MessageType, GroupSettingChange} = require('@adiwajshing/baileys');
-const {shefin} = require('../events');
-const Config = require('../config');
-
-const Language = require('../language');
-const Lang = Language.getString('admin');
-const mut = Language.getString('mute');
+let {MessageType, GroupSettingChange} = require('@adiwajshing/baileys');
+let Alexa = require('../events');
+let Config = require('../config');
+let Language = require('../language');
+let Lang = Language.getString('admin');
+let mut = Language.getString('mute');
 
 async function checkImAdmin(message, user = message.client.user.jid) {
     var grup = await message.client.groupMetadata(message.jid);
@@ -23,7 +14,7 @@ async function checkImAdmin(message, user = message.client.user.jid) {
     return sonuc.includes(true);
 }
 
-shefin({pattern: 'ban ?(.*)', fromMe: true, desc: Lang.BAN_DESC}, (async (message, match) => {  
+Alexa.addCommand({pattern: 'ban ?(.*)', fromMe: true, desc: Lang.BAN_DESC}, (async (message, match) => {  
     if (message.jid.endsWith('@g.us')) {
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
@@ -62,7 +53,7 @@ shefin({pattern: 'ban ?(.*)', fromMe: true, desc: Lang.BAN_DESC}, (async (messag
     }
 	}}));
 
-shefin({pattern: 'add ?(.*)', fromMe: true, desc: Lang.ADD_DESC}, (async (message, match) => {  
+Alexa.addCommand({pattern: 'add ?(.*)', fromMe: true, desc: Lang.ADD_DESC}, (async (message, match) => {  
     if (message.jid.endsWith('@g.us')) {
 	var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
@@ -84,7 +75,7 @@ else {return await message.client.sendMessage(message.jid,"This number does not 
     }
 	}))
 
-shefin({pattern: 'promote ?(.*)', fromMe: true, desc: Lang.PROMOTE_DESC}, (async (message, match) => {    
+Alexa.addCommand({pattern: 'promote ?(.*)', fromMe: true, desc: Lang.PROMOTE_DESC}, (async (message, match) => {    
     if (message.jid.endsWith('@g.us')) {
 	var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
@@ -143,7 +134,7 @@ shefin({pattern: 'promote ?(.*)', fromMe: true, desc: Lang.PROMOTE_DESC}, (async
     }
 	}}));
 
-shefin({pattern: 'demote ?(.*)', fromMe: true, desc: Lang.DEMOTE_DESC}, (async (message, match) => {    
+Alexa.addCommand({pattern: 'demote ?(.*)', fromMe: true, desc: Lang.DEMOTE_DESC}, (async (message, match) => {    
     if (message.jid.endsWith('@g.us')) {
 	var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN);
@@ -202,7 +193,7 @@ shefin({pattern: 'demote ?(.*)', fromMe: true, desc: Lang.DEMOTE_DESC}, (async (
     }
 	}}));
 
-shefin({pattern: 'mute ?(.*)', fromMe: true, desc: Lang.MUTE_DESC}, (async (message, match) => {    
+Alexa.addCommand({pattern: 'mute ?(.*)', fromMe: true, desc: Lang.MUTE_DESC}, (async (message, match) => {    
     if (message.jid.endsWith('@g.us')) {
 	var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
@@ -885,7 +876,7 @@ shefin({pattern: 'mute ?(.*)', fromMe: true, desc: Lang.MUTE_DESC}, (async (mess
         }
     }}));
 
-shefin({pattern: 'unmute ?(.*)', fromMe: true, desc: Lang.UNMUTE_DESC}, (async (message, match) => {    
+Alexa.addCommand({pattern: 'unmute ?(.*)', fromMe: true, desc: Lang.UNMUTE_DESC}, (async (message, match) => {    
     if (message.jid.endsWith('@g.us')) {
 	var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
@@ -900,7 +891,7 @@ shefin({pattern: 'unmute ?(.*)', fromMe: true, desc: Lang.UNMUTE_DESC}, (async (
     }
 }}));
 
-shefin({pattern: 'invite ?(.*)', fromMe: true, desc: Lang.INVITE_DESC}, (async (message, match) => {    
+Alexa.addCommand({pattern: 'invite ?(.*)', fromMe: true, desc: Lang.INVITE_DESC}, (async (message, match) => {    
     if (message.jid.endsWith('@g.us')) {
 	var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN, MessageType.text);
@@ -908,7 +899,7 @@ shefin({pattern: 'invite ?(.*)', fromMe: true, desc: Lang.INVITE_DESC}, (async (
     await message.client.sendMessage(message.jid,Lang.INVITE + ' https://chat.whatsapp.com/' + invite, MessageType.text);
 }}));
 
-shefin({pattern: 'revoke', fromMe: true, desc: "Revokes/resets group's invite link"}, (async (message, match) => {    
+Alexa.addCommand({pattern: 'revoke', fromMe: true, desc: "Revokes/resets group's invite link"}, (async (message, match) => {    
     if (message.jid.endsWith('@g.us')) {
 	var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid, "_Promote bot as an *Admin* to use super commands_", MessageType.text);
