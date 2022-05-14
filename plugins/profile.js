@@ -1,18 +1,11 @@
-/* Copyright (C) 2020 Yusuf Usta.
-Licensed under the  GPL-3.0 License;
-you may not use this file except in compliance with the License.
-WhatsAsena - Yusuf Usta
-*/
+let Alexa = require('../events');
+let {MessageType} = require('@adiwajshing/baileys');
+let Config = require('../config');
+let fs = require('fs');
+let Language = require('../language');
+let Lang = Language.getString('profile');
 
-const {shefin} = require('../events');
-const {MessageType} = require('@adiwajshing/baileys');
-const Config = require('../config');
-
-const fs = require('fs');
-const Language = require('../language');
-const Lang = Language.getString('profile');
-
-shefin({pattern: 'left$', fromMe: true, dontAddCommandList: true, desc: Lang.KICKME_DESC, onlyGroup: true}, (async (message, match) => {
+Alexa.addCommand({pattern: 'left$', fromMe: true, dontAddCommandList: true, desc: Lang.KICKME_DESC, onlyGroup: true}, (async (message, match) => {
     if (Config.KICKMEMSG == 'default') { 
         await message.client.sendMessage(message.jid,Lang.KICKME,MessageType.text);
         await message.client.groupLeave(message.jid);
@@ -23,7 +16,7 @@ shefin({pattern: 'left$', fromMe: true, dontAddCommandList: true, desc: Lang.KIC
     }
 }));
 
-shefin({pattern: 'pp$', fromMe: true, dontAddCommandList: true, desc: Lang.PP_DESC}, (async (message, match) => {    
+Alexa.addCommand({pattern: 'pp$', fromMe: true, dontAddCommandList: true, desc: Lang.PP_DESC}, (async (message, match) => {    
     if (!message.reply_message || !message.reply_message.image) return await message.client.sendMessage(message.jid,Lang.NEED_PHOTO, MessageType.text);
     
     var load = await message.client.sendMessage(message.jid,Lang.PPING,MessageType.text);
@@ -39,7 +32,7 @@ shefin({pattern: 'pp$', fromMe: true, dontAddCommandList: true, desc: Lang.PP_DE
     await message.client.deleteMessage(message.jid, {id: load.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-shefin({pattern: 'block ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.BLOCK_DESC}, (async (message, match) => {   
+Alexa.addCommand({pattern: 'block ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.BLOCK_DESC}, (async (message, match) => {   
     if (Config.BLOCKMSG == 'default') {  
         if (message.reply_message !== false) {
             await message.client.sendMessage(message.jid, '@' + message.reply_message.jid.split('@')[0] + '```, ' + Lang.BLOCKED + '!```', MessageType.text, {
@@ -82,7 +75,7 @@ shefin({pattern: 'block ?(.*)', fromMe: true, dontAddCommandList: true, desc: La
     }
 }));
 
-shefin({pattern: 'unblock ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.UNBLOCK_DESC}, (async (message, match) => { 
+Alexa.addCommand({pattern: 'unblock ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.UNBLOCK_DESC}, (async (message, match) => { 
     if (Config.UNBLOCKMSG == 'default') { 
    
         if (message.reply_message !== false) {
@@ -126,7 +119,7 @@ shefin({pattern: 'unblock ?(.*)', fromMe: true, dontAddCommandList: true, desc: 
     }
 }));
    let sourav = Config.WORKTYPE == 'public' ? false : true
-   shefin({pattern: 'jid ?(.*)', fromMe: sourav, desc: Lang.JID_DESC}, (async (message, match) => {    
+   Alexa.addCommand({pattern: 'jid ?(.*)', fromMe: sourav, desc: Lang.JID_DESC}, (async (message, match) => {    
         if (message.reply_message !== false) {
             await message.client.sendMessage(message.jid, message.reply_message.jid, MessageType.text, {quoted: message.data}
             );
