@@ -1,6 +1,6 @@
 let simpleGit = require('simple-git');
 let git = simpleGit();
-let {shefin} = require('../events');
+let Alexa = require('../events');
 let {MessageType} = require('@adiwajshing/baileys');
 let Config = require('../config');
 let exec = require('child_process').exec;
@@ -10,7 +10,7 @@ let heroku = new Heroku({ token: Config.HEROKU.API_KEY })
 let Language = require('../language');
 let Lang = Language.getString('updater');
 
-shefin({pattern: 'update check$', fromMe: true, dontAddCommandList: true, desc: Lang.UPDATER_DESC}, (async (message, match) => {
+Alexa.addCommand({pattern: 'update check$', fromMe: true, dontAddCommandList: true, desc: Lang.UPDATER_DESC}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {
@@ -33,7 +33,7 @@ shefin({pattern: 'update check$', fromMe: true, dontAddCommandList: true, desc: 
     }
 }));
 
-shefin({pattern: 'update start$', fromMe: true,dontAddCommandList: true, desc: Lang.UPDATE_NOW_DESC}, (async (message, match) => {
+Alexa.addCommand({pattern: 'update start$', fromMe: true,dontAddCommandList: true, desc: Lang.UPDATE_NOW_DESC}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {
