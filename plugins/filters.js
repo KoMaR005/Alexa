@@ -1,12 +1,12 @@
-const fs = require('fs')
-const {shefin} = require('../events');
-const {MessageType, Mimetype } = require('@adiwajshing/baileys');
-const FilterDb = require('./sql/filters');
-const Config = require('../config');
-const Language = require('../language');
-const Lang = Language.getString('filters');
+let fs = require('fs')
+let Alexa = require('../events');
+let {MessageType, Mimetype } = require('@adiwajshing/baileys');
+let FilterDb = require('./sql/filters');
+let Config = require('../config');
+let Language = require('../language');
+let Lang = Language.getString('filters');
 
-shefin({pattern: 'filter ?(.*)', fromMe: true, desc: Lang.FILTER_DESC, dontAddCommandList: true}, (async (message, match) => {
+Alexa.addCommand({pattern: 'filter ?(.*)', fromMe: true, desc: Lang.FILTER_DESC, dontAddCommandList: true}, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
 
     if (message.reply_message.text) {
@@ -31,7 +31,7 @@ shefin({pattern: 'filter ?(.*)', fromMe: true, desc: Lang.FILTER_DESC, dontAddCo
         await message.client.sendMessage(message.jid,Lang.FILTERED.format(match[0].replace(/['"]+/g, '')),MessageType.text);
     }
 }));
-shefin({pattern: 'stop ?(.*)', fromMe: true, desc: Lang.STOP_DESC, dontAddCommandList: true}, (async (message, match) => {
+Alexa.addCommand({pattern: 'stop ?(.*)', fromMe: true, desc: Lang.STOP_DESC, dontAddCommandList: true}, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
     if (match === null) {
         return await message.client.sendMessage(message.jid,Lang.NEED_REPLY + '\n*Example:* ```.stop "hello"```',MessageType.text)
@@ -45,7 +45,7 @@ shefin({pattern: 'stop ?(.*)', fromMe: true, desc: Lang.STOP_DESC, dontAddComman
         await message.client.sendMessage(message.jid,Lang.DELETED, MessageType.text)
     }
 }));
-shefin({on: 'text', fromMe: false}, (async (message, match) => {
+Alexa.addCommand({on: 'text', fromMe: false}, (async (message, match) => {
     if (message.jid.includes(Config.YAK)) {
 
             return;
