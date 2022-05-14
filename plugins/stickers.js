@@ -1,3 +1,4 @@
+const {shefin} = require('../events');
 const {MessageType, Mimetype} = require('@adiwajshing/baileys');
 const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
@@ -6,11 +7,11 @@ const cwebp = require('cwebp-bin');
 const Config = require('../config');
 let w = require('../config');
 let v = w.SUPPORT3
-let {getBuffer,sticker,addCommand} = require('alexa-bot');
+let {getBuffer,sticker} = require('alexa-bot');
 const Language = require('../language');
 const Lang = Language.getString('sticker');
 
-addCommand({pattern: 'sticker$', fromMe: true, desc: Lang.STICKER_DESC}, (async (message, match) => {    
+shefin({pattern: 'sticker$', fromMe: true, desc: Lang.STICKER_DESC}, (async (message, match) => {    
 
         if (message.reply_message === false) return await message.client.sendMessage(message.jid,Lang.NEED_REPLY, MessageType.text);
         var location = await message.client.downloadAndSaveMediaMessage({
