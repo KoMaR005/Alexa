@@ -10,48 +10,36 @@ let heroku = new Heroku({ token: Config.HEROKU.API_KEY })
 let Language = require('../language');
 let Lang = Language.getString('updater');
 
-Alexa.addCommand({pattern: 'update check$', fromMe: true, dontAddCommandList: true, desc: Lang.UPDATER_DESC}, (async (message, match) => {
+Alexa.addCommand({pattern: 'update$', fromMe: true, desc: Lang.UPDATER_DESC}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {
-        await message.client.sendMessage(
-            message.jid,
-            Lang.UPDATE, MessageType.text
-        );    
+        await message.sendReply(Lang.UPDATE);
     } else {
         var degisiklikler = Lang.NEW_UPDATE;
         commits['all'].map(
             (commit) => {
-                degisiklikler += '(' + commit.date.substring(0, 10) + ') : *' + commit.message.replace('Update','Fixed').replace('.js','') + '*\n';
+                degisiklikler += '➥ [' + commit.date.substring(0, 10) + ']: ' + commit.message + ' <' + commit.author_name + '>\n';
             }
         );
         
-        await message.client.sendMessage(
-            message.jid,
-            degisiklikler, MessageType.text
-        ); 
+        await message.sendReply(degisiklikler + "```");
     }
 }));
 
-Alexa.addCommand({pattern: 'update start$', fromMe: true,dontAddCommandList: true, desc: Lang.UPDATE_NOW_DESC}, (async (message, match) => {
+Alexa.addCommand({pattern: 'update now$', fromMe: true, desc: Lang.UPDATE_NOW_DESC}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {
-        return await message.client.sendMessage(
-            message.jid,
-            Lang.UPDATE, MessageType.text
-        );    
+        return await message.sendReply(Lang.UPDATE);
     } else {
-            await message.client.sendMessage(
-                    message.jid,Lang.UPDATING, MessageType.text);
+            await message.sendReply(Lang.UPDATING);
             try {
                 var app = await heroku.get('/apps/' + Config.HEROKU.APP_NAME)
             } catch {
-                await message.client.sendMessage(
-                    message.jid,Lang.INVALID_HEROKU, MessageType.text);
-                await new Promise(r => setTimeout(r, 1000));
-                return await message.client.sendMessage(
-                    message.jid,Lang.IN_AF, MessageType.text);
+                return await message.sendReply(
+                    Lang.INVALID_HEROKU
+                   );
             }
 
             git.fetch('upstream', Config.BRANCH);
@@ -66,11 +54,7 @@ Alexa.addCommand({pattern: 'update start$', fromMe: true,dontAddCommandList: tru
             } catch { console.log('heroku remote ekli'); }
             await git.push('heroku', Config.BRANCH);
 
-            await message.client.sendMessage(
-                message.jid,Lang.UPDATED, MessageType.text);
-
-            await message.sendMessage(Lang.AFTER_UPDATE);
-            
-        
+            await message.sendReply(Lang.UPDATED);
+            await message.sendReply(Lang.AFTER_UPDATE);
     }
 }));
