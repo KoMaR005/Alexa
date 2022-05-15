@@ -18,7 +18,7 @@ module.exports = {
     SUPPORT: process.env.ASENA === undefined ? '919074309534-1632403322' : process.env.ASENA,
     take_key: process.env.TAKE_KEY === undefined ? '' : process.env.TAKE_KEY,
     find_key: process.env.FIND_KEY === undefined ? '' : process.env.FIND_KEY,
-    STICKER_PACKNAME: process.env.STICKER_DATA === undefined ? 'sʜᴇғɪɴ|ᴀʟᴇxᴀ' : process.env.STICKER_DATA,
+    SHEFINKL14: process.env.STICKER_DATA === undefined ? 'sʜᴇғɪɴ|ᴀʟᴇxᴀ' : process.env.STICKER_DATA,
     WORKTYPE: process.env.WORK_TYPE === undefined ? 'private' : process.env.WORK_TYPE, 
     HANDLERS: process.env.HANDLERS === undefined ? '^[.!;]' : process.env.HANDLERS,
     SEND_READ: process.env.SEND_READ === undefined ? false : convertToBool(process.env.SEND_READ),
