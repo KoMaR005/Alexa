@@ -76,6 +76,7 @@ module.exports = {
     YAK: process.env.YAK === undefined ? '919074309534' : process.env.YAK,
     sourav_g_link: process.env.GROUP_LINK === undefined ? 'https://chat.whatsapp.com/Dt3C4wrQmt0GG6io1IBIHb' : process.env.GROUP_LINK,
     BRANCH: 'master',
+    API: 'https://levanter.up.railway.app/',
     HEROKU: {
         HEROKU: process.env.HEROKU === undefined ? false : convertToBool(process.env.HEROKU),
         API_KEY: process.env.HEROKU_API_KEY === undefined ? '' : process.env.HEROKU_API_KEY,
