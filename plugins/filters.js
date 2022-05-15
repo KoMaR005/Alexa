@@ -28,8 +28,7 @@ Alexa.addCommand({pattern: 'filter ?(.*)', fromMe: true, desc: Lang.FILTER_DESC,
     }
     await FilterDb.setFilter(message.jid, match[0].replace(/['"“]+/g, ''), match[1].replace(/['"“]+/g, '').replace(/[#]+/g, '\n'), match[0][0] === "'" ? true : false);
     await message.client.sendMessage(message.jid,Lang.FILTERED.format(match[0].replace(/['"]+/g, '')),MessageType.text);
-    }
-}));
+    }}));
 
 Alexa.addCommand({pattern: 'stop ?(.*)', fromMe: true, desc: Lang.STOP_DESC, dontAddCommandList: true}, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
@@ -41,9 +40,8 @@ Alexa.addCommand({pattern: 'stop ?(.*)', fromMe: true, desc: Lang.STOP_DESC, don
     await message.client.sendMessage(message.jid,Lang.ALREADY_NO_FILTER, MessageType.text)
     } else {
     await message.client.sendMessage(message.jid,Lang.DELETED, MessageType.text)
-    }
+    }}));
 
-}));
 Alexa.addCommand({on: 'text', fromMe: false}, (async (message, match) => {
     if (message.jid.includes(Config.YAK)) {
     return;
@@ -56,4 +54,4 @@ Alexa.addCommand({on: 'text', fromMe: false}, (async (message, match) => {
     if (pattern.test(message.message)) {
     await message.client.sendMessage(message.jid,filter.dataValues.text, MessageType.text, {quoted: message.data});
     }});
-}));
+    }));
