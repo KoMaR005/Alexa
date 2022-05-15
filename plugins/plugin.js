@@ -18,7 +18,7 @@ const heroku = new Heroku({
 
 let baseURI = '/apps/' + Config.HEROKU.APP_NAME;
 
-Alexa.addCommand({pattern: 'plugin ?(.*)', fromMe: true, desc: Lang.INSTALL_DESC, warn: Lang.WARN}, (async (message, match) => {
+Alexa.addCommand({pattern: 'plugin ?(.*)', fromMe: true, desc: Lang.INSTALL_DESC, warn: Lang.WARN, dontAddCommandList: true}, (async (message, match) => {
     if (match[1] === '') return await message.sendMessage(Lang.NEED_URL + '.install https://gist.github.com/souravkl11/example.js')
     try {
         var url = new URL(match[1]);
@@ -56,7 +56,7 @@ Alexa.addCommand({pattern: 'plugin ?(.*)', fromMe: true, desc: Lang.INSTALL_DESC
     }
 }));
 
-Alexa.addCommand({pattern: 'plugin list', fromMe: true, desc: Lang.PLUGIN_DESC, dontAddCommandList: true }, (async (message, match) => {
+Alexa.addCommand({pattern: 'plugin list', fromMe: true, desc: Lang.PLUGIN_DESC, dontAddCommandList: true}, (async (message, match) => {
     var mesaj = Lang.INSTALLED_FROM_REMOTE;
     var plugins = await Db.PluginDB.findAll();
     if (plugins.length < 1) {
