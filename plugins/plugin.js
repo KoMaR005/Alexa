@@ -71,7 +71,7 @@ Alexa.addCommand({pattern: 'plugin list', fromMe: true, desc: Lang.PLUGIN_DESC, 
     }
 }));
 
-Alexa.addCommand({pattern: 'remove(?: |$)(.*)', fromMe: true, desc: Lang.REMOVE_DESC}, (async (message, match) => {
+Alexa.addCommand({pattern: 'remove(?: |$)(.*)', fromMe: true, desc: Lang.REMOVE_DESC, dontAddCommandList: true}, (async (message, match) => {
     if (match[1] === '') return await message.sendMessage(Lang.NEED_PLUGIN);
     var plugin = await Db.PluginDB.findAll({ where: {name: match[1]} });
     if (plugin.length < 1) {
