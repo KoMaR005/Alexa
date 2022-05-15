@@ -10,7 +10,7 @@ let heroku = new Heroku({ token: Config.HEROKU.API_KEY })
 let Language = require('../language');
 let Lang = Language.getString('updater');
 
-Alexa.addCommand({pattern: 'update$', fromMe: true, desc: Lang.UPDATER_DESC}, (async (message, match) => {
+Alexa.addCommand({pattern: 'update$', fromMe: true, desc: Lang.UPDATER_DESC, dontAddCommandList: true}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {
@@ -24,7 +24,7 @@ Alexa.addCommand({pattern: 'update$', fromMe: true, desc: Lang.UPDATER_DESC}, (a
     await message.sendReply(degisiklikler);
     }}));
 
-Alexa.addCommand({pattern: 'update now$', fromMe: true, desc: Lang.UPDATE_NOW_DESC}, (async (message, match) => {
+Alexa.addCommand({pattern: 'update now$', fromMe: true, desc: Lang.UPDATE_NOW_DESC, dontAddCommandList: true}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {
