@@ -1,6 +1,6 @@
 ## Alexa
 
-This is a Userbot based on WhatsAsena.
+Simple WhatsApp Bot
 
 ## Setup
 
