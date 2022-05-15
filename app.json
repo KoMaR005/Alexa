@@ -8,7 +8,7 @@
     "success_url": "https://bit.ly/Shefin-Alexa",
     "stack": "container",
     "env": {
-        "RAGANORK_CODE": {
+        "ALEXA_SESSION": {
             "description": "Your QR session. Paste here yours Alexa code.",
             "required": true
         },
