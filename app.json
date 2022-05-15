@@ -26,6 +26,15 @@
             "required": true,
             "value": "Caption message"
         },
+        "BLOCK_CHAT": {
+            "description": "Choose in which chat the bot won't work there. Ex: 91xxxx && 91xxxx-1xxx or 91xxxxx,91xxxx...",
+            "required": false
+        },
+        "NO_ONLINE": {
+            "description": "Type true if you don't want to appear online.",
+            "required": false,
+            "value": "true"
+        },
         "HANDLERS": {
             "description": "Prefix for commands. You can also use 'false' for no prefix",
             "required": true,
