@@ -27,6 +27,7 @@
   "dependencies": {
     "alexa-bot": "2.1.4",
     "file-type": "16.5.2",
+    "cwebp-bin": "^6.1.1",
     "nekobin": "0.0.1",
     "sequelize": "6.13.0",
     "supervisor": "0.12.0"
