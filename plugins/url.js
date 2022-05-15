@@ -3,8 +3,8 @@ let {MessageType} = require('@adiwajshing/baileys');
 let c = require('../config');
 let s = c.SUPPORT2
 let {upload} = require('alexa-bot');
-let public = Config.WORKTYPE == 'public' ? false : true
-let private = Config.WORKTYPE == 'private' ? false : true
+let public = c.WORKTYPE == 'public' ? false : true
+let private = c.WORKTYPE == 'private' ? false : true
 
 Alexa.addCommand({pattern: 'url ?(.*)', fromMe: private, desc:'Uploads image to imgur.com'}, (async (m, match) => { 
     if (!m.reply_message.image && !m.reply_message.video ) return;
