@@ -214,14 +214,14 @@
         },
         "updater": {
             "UPDATER_DESC": "Checks if your bot has updates.",
-            "UPDATE": "*Your bot is completely up-to-date!*",
-            "NEW_UPDATE": "*🥳 New update available!*\n\n```",
+            "UPDATE": "_*Your bot is completely up-to-date!*_",
+            "NEW_UPDATE": "*New update available for Bot!*\n\n",
             "UPDATE_NOW_DESC": "It makes updates.",
-            "UPDATING": "🔁 Bot Updating...!\n🕓 This may Take a few minutes.",
-            "INVALID_HEROKU": "*Your Heroku information is wrong!*",
-            "UPDATED": "*✅ Successfully Updated!*",
+            "UPDATING": "_*Update started*_",
+            "INVALID_HEROKU": "_*Your Heroku information is wrong!*_",
+            "UPDATED": "_*Update finished*_",
             "UPDATED_LOCAL": "*✅ Successfully Updated!*",
-            "AFTER_UPDATE": "*Bot Restarting Automatically!*"
+            "AFTER_UPDATE": "_*Restarting*_"
         },
         "weather": {
             "WEATHER_DESC": "Shows the weather.",
