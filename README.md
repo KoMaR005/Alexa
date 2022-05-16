@@ -1,6 +1,6 @@
 ## Alexa
 
-Simple WhatsApp Bot
+Simple WhatsApp Bot✨
 
 ## Setup
 
