@@ -13,9 +13,7 @@ Alexa.addCommand(
     let end = new Date().getTime();
     await message.client.sendMessage(
     message.jid,'*Pong!*\n```' + (end - start) + 'ms```', MessageType.text, { quoted: message.data });
-    }
-  )
-)
+    }))
 
 Alexa.addCommand(
   { pattern: "qr", fromMe: true, desc: "Read Qr.", owner: false },
@@ -30,5 +28,4 @@ Alexa.addCommand(
     return await message.sendMessage(value.result, { quoted: message.data })
     }
     qr.decode(img.bitmap)
-  }
-)
+    })
