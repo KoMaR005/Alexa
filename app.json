@@ -1,7 +1,7 @@
 {
     "name": "Alexa",
     "description": "Alexa bot - Extra featured, WhatsApp User bot.",
-    "logo": "https://www.linkpicture.com/q/rgnk.jpg",
+    "logo": "https://i.imgur.com/nAqIWaC.jpeg",
     "keywords": ["WhatsApp", "Userbot", "Alexa", "WhatsAlexa", "bot", "ai"],
     "repository": "https://github.com/5hefin/Alexa",
     "website":   "https://bit.ly/Shefin-Alexa",
@@ -20,11 +20,6 @@
             "description": "Bot language. English => en, Malayalam => ml, Hindi => HI,",
             "required": true,
             "value": "en"
-        },
-        "ALL_CAPTION": {
-            "description": "Give your caption here. Example: Made by Raganork.",
-            "required": true,
-            "value": "Caption message"
         },
         "BLOCK_CHAT": {
             "description": "Choose in which chat the bot won't work there. Ex: 91xxxx && 91xxxx-1xxx or 91xxxxx,91xxxx...",
@@ -70,7 +65,7 @@
         "STICKER_DATA": {
             "description": "Sticker packname changer. Give any text here",
             "required": false,    
-            "value": "Raganork|Souravkl11"
+            "value": "sʜᴇғɪɴ|ᴀʟᴇxᴀ"
              
         }
     },
