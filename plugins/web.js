@@ -6,14 +6,15 @@ let Language = require("../language");
 let Lang = Language.getString("web");
 
 Alexa.addCommand(
-  { pattern: "ping", fromMe: true, desc: Lang.PING_DESC },
+  { pattern: 'ping$', fromMe: true, desc: Lang.PING_DESC },
   async (message, match) => {
     let start = new Date().getTime();
     await message.sendMessage('```Ping!```');
     let end = new Date().getTime();
     await message.client.sendMessage(
     message.jid,'*Pong!*\n```' + (end - start) + 'ms```', MessageType.text, { quoted: message.data });
-    }))
+  }
+)
 
 Alexa.addCommand(
   { pattern: "qr", fromMe: true, desc: "Read Qr.", owner: false },
@@ -28,4 +29,5 @@ Alexa.addCommand(
     return await message.sendMessage(value.result, { quoted: message.data })
     }
     qr.decode(img.bitmap)
-    })
+  }
+)
