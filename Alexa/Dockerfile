@@ -1,4 +1,7 @@
-FROM quay.io/lyfe00011/bot:beta
-RUN git clone https://github.com/5hefin/Alexa.git /5hefin/Alexa/
-WORKDIR /5hefin/Alexa/
+FROM fusuf/whatsasena:latest
+RUN git clone https://github.com/5hefin/Alexa /5hefin/Alexa
+RUN yarn install --ignore-engines
+RUN npm install supervisor -g
+WORKDIR /5hefin/Alexa
+ENV TZ=Asia/Kolkata
 CMD ["node", "index.js"]
