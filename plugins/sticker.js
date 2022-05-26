@@ -1,5 +1,5 @@
 let Alexa = require('../events');
-let {MessageType, Mimetype} = require('alexa-web');
+let {MessageType, Mimetype} = require('@adiwajshing/baileys');
 let fs = require('fs');
 let ffmpeg = require('fluent-ffmpeg');
 let {execFile} = require('child_process');
