@@ -26,7 +26,6 @@
   "homepage": "https://github.com/5hefin/Alexa#readme",
   "dependencies": {
     "alexa-bot": "2.1.7",
-    "alexa-web": "1.0.0",
     "file-type": "16.5.2",
     "nekobin": "0.0.1",
     "sequelize": "6.13.0",
