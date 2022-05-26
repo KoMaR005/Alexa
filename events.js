@@ -1,1 +1,55 @@
-function _0x213f(){var _0x30abf1=['button','desc','11aKIjGZ','5438964dhXWIW','9195cShOLG','text','message','image','268BCaqYF','HANDLERS','16590eexYnx','deleteCommand','handler','onlyPinned','startsWith','dontAddCommandList','includes','7Lkcgaj','onlyPm','false','34440SQwiHr','usage','fromMe','exports','240222qcMYxP','photo','9pxNfgU','pattern','1464920kqTxXU','1RkaPvK','warn','flags','onlyGroup','610180ArTvqw'];_0x213f=function(){return _0x30abf1;};return _0x213f();}var _0x46f367=_0x47ec;(function(_0x361907,_0x383864){var _0x581791=_0x47ec,_0x52b1cb=_0x361907();while(!![]){try{var _0x34db0d=-parseInt(_0x581791(0x14a))/0x1*(-parseInt(_0x581791(0x159))/0x2)+parseInt(_0x581791(0x141))/0x3+parseInt(_0x581791(0x157))/0x4*(-parseInt(_0x581791(0x153))/0x5)+-parseInt(_0x581791(0x145))/0x6*(parseInt(_0x581791(0x13e))/0x7)+-parseInt(_0x581791(0x149))/0x8+-parseInt(_0x581791(0x147))/0x9*(-parseInt(_0x581791(0x14e))/0xa)+-parseInt(_0x581791(0x151))/0xb*(-parseInt(_0x581791(0x152))/0xc);if(_0x34db0d===_0x383864)break;else _0x52b1cb['push'](_0x52b1cb['shift']());}catch(_0x63fc12){_0x52b1cb['push'](_0x52b1cb['shift']());}}}(_0x213f,0x2dd1b));var config=require('./config'),Commands=[],skl11;function _0x47ec(_0x309d3b,_0x30bad2){var _0x213f4e=_0x213f();return _0x47ec=function(_0x47ecbf,_0x611f76){_0x47ecbf=_0x47ecbf-0x13e;var _0x5013a4=_0x213f4e[_0x47ecbf];return _0x5013a4;},_0x47ec(_0x309d3b,_0x30bad2);}if(config[_0x46f367(0x158)]==_0x46f367(0x140))skl11='^';else skl11=config[_0x46f367(0x158)];var sk;if(!skl11[_0x46f367(0x15d)]('^[')&&!skl11==='^')sk='^['+skl11+']';else sk=skl11;function addCommand(_0x1e73d5,_0x599923){var _0x503a80=_0x46f367,_0x5024ca=[_0x503a80(0x146),_0x503a80(0x156),_0x503a80(0x154),_0x503a80(0x14f),_0x503a80(0x155)],_0x560544={'fromMe':_0x1e73d5[_0x503a80(0x143)]===undefined?!![]:_0x1e73d5[_0x503a80(0x143)],'onlyGroup':_0x1e73d5[_0x503a80(0x14d)]===undefined?![]:_0x1e73d5[_0x503a80(0x14d)],'onlyPinned':_0x1e73d5[_0x503a80(0x15c)]===undefined?![]:_0x1e73d5[_0x503a80(0x15c)],'onlyPm':_0x1e73d5[_0x503a80(0x13f)]===undefined?![]:_0x1e73d5[_0x503a80(0x13f)],'deleteCommand':_0x1e73d5['deleteCommand']===undefined?!![]:_0x1e73d5[_0x503a80(0x15a)],'desc':_0x1e73d5[_0x503a80(0x150)]===undefined?'':_0x1e73d5[_0x503a80(0x150)],'usage':_0x1e73d5[_0x503a80(0x142)]===undefined?'':_0x1e73d5[_0x503a80(0x142)],'dontAddCommandList':_0x1e73d5[_0x503a80(0x15e)]===undefined?![]:_0x1e73d5['dontAddCommandList'],'warn':_0x1e73d5[_0x503a80(0x14b)]===undefined?'':_0x1e73d5[_0x503a80(0x14b)],'function':_0x599923};if(_0x1e73d5['on']===undefined&&_0x1e73d5['pattern']===undefined)_0x560544['on']='message',_0x560544[_0x503a80(0x143)]=![];else _0x1e73d5['on']!==undefined&&_0x5024ca[_0x503a80(0x15f)](_0x1e73d5['on'])?(_0x560544['on']=_0x1e73d5['on'],_0x1e73d5[_0x503a80(0x148)]!==undefined&&(_0x560544[_0x503a80(0x148)]=new RegExp((_0x1e73d5[_0x503a80(0x15b)]===undefined||_0x1e73d5[_0x503a80(0x15b)]===!![]?sk:'')+_0x1e73d5['pattern'],_0x1e73d5[_0x503a80(0x14c)]!==undefined?_0x1e73d5['flags']:''))):_0x560544['pattern']=new RegExp((_0x1e73d5[_0x503a80(0x15b)]===undefined||_0x1e73d5[_0x503a80(0x15b)]===!![]?sk:'')+_0x1e73d5['pattern'],_0x1e73d5[_0x503a80(0x14c)]!==undefined?_0x1e73d5[_0x503a80(0x14c)]:'');return Commands['push'](_0x560544),_0x560544;}module[_0x46f367(0x144)]={'addCommand':addCommand,'commands':Commands};
+/* Copyright (C) 2020 Yusuf Usta.
+
+Licensed under the  GPL-3.0 License;
+you may not use this file except in compliance with the License.
+
+WhatsAsena - Yusuf Usta
+*/
+
+// Komutları burada tutacağız.
+var config = require('./config');
+var Commands = [];
+var skl11;
+if (config.HANDLERS == 'false') skl11 = '^'
+else skl11 = config.HANDLERS
+var sk;
+if (!skl11.startsWith('^[') && !skl11 === '^') sk = '^[' + skl11 + ']'
+else sk = skl11
+function addCommand(info, func) {
+    // Basit bir fonksiyon, komut eklemek için.
+    var types = ['photo', 'image', 'text','button', 'message'];
+    
+    var infos = {
+        fromMe: info['fromMe'] === undefined ? true : info['fromMe'], // Or Sudo
+        onlyGroup: info['onlyGroup'] === undefined ? false : info['onlyGroup'],
+        onlyPinned: info['onlyPinned'] === undefined ? false : info['onlyPinned'],
+        onlyPm: info['onlyPm'] === undefined ? false : info['onlyPm'],
+        deleteCommand: info['deleteCommand'] === undefined ? true : info['deleteCommand'],
+        desc: info['desc'] === undefined ? '' : info['desc'],
+        usage: info['usage'] === undefined ? '' : info['usage'],
+        dontAddCommandList: info['dontAddCommandList'] === undefined ? false : info['dontAddCommandList'],
+        warn: info['warn'] === undefined ? '' : info['warn'],
+        function: func
+    };
+
+    if (info['on'] === undefined && info['pattern'] === undefined) {
+        infos.on = 'message';
+        infos.fromMe = false;
+    } else if (info['on'] !== undefined && types.includes(info['on'])) {
+        infos.on = info['on'];
+
+        if (info['pattern'] !== undefined) {
+            infos.pattern = new RegExp((info['handler'] === undefined || info['handler'] === true ? sk : '') + info.pattern, (info['flags'] !== undefined ? info['flags'] : ''));
+        }
+    } else {
+        infos.pattern = new RegExp((info['handler'] === undefined || info['handler'] === true ? sk : '') + info.pattern, (info['flags'] !== undefined ? info['flags'] : ''));
+    }
+
+    Commands.push(infos);
+    return infos;
+}
+
+module.exports = {
+    addCommand: addCommand,
+    commands: Commands
+}
