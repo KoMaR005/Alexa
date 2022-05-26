@@ -28,7 +28,7 @@
     "alexa-bot": "2.1.7",
     "file-type": "16.5.2",
     "nekobin": "0.0.1",
-    "sequelize": "6.13.0",
+    "sequelize": "6.20.0",
     "supervisor": "0.12.0"
      }
 }
