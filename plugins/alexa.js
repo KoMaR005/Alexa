@@ -1,6 +1,6 @@
 let Alexa = require('../events');
 let Config = require('../config');
-let {MessageType} = require('alexa-web');
+let {MessageType} = require('@adiwajshing/baileys');
 let Language = require('../language');
 let Lang = Language.getString('alexa');
 Alexa.addCommand({pattern: 'list ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
