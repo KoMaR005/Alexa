@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/5hefin/Alexa.git"
+    "url": "git+https://github.com/KoMaR005/Alexa.git"
   },
   "keywords": [
     "whatsapp",
@@ -21,9 +21,9 @@
   "developer": "Shefin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/5hefin/Alexa/issues"
+    "url": "https://github.com/KoMaR005/Alexa/issues"
   },
-  "homepage": "https://github.com/5hefin/Alexa#readme",
+  "homepage": "https://github.com/KoMaR005/Alexa#readme",
   "dependencies": {
     "alexa-bot": "2.1.7",
     "file-type": "16.5.2",
